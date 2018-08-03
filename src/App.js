@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar } from "./components/Navbar";
+import {VideoList} from "./components/VideoList";
 import './App.css';
 
 
@@ -10,6 +11,7 @@ class App extends Component {
     return (
       <div className="App">
          <Navbar/>
+          <VideoList/>
       </div>
     );
   }
