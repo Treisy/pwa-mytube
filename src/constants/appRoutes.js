@@ -1,7 +1,8 @@
 const appRoutes = {
   app: {
     HOME: '/',
-    CONFIG: '/configuration'
+    CONFIG: '/configuration',
+    CONF_VIDEOS: '/configuration/videos'
   }
 };
 
