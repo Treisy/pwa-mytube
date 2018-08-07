@@ -6,6 +6,7 @@ import {spaceBottom} from "../assets/styles/helpers/utils";
 import IconButton from '@material-ui/core/IconButton';
 import SettingsIcon from '@material-ui/icons/SettingsApplications';
 import {css} from 'emotion';
+import appRoutes from "../constants/appRoutes";
 
 const flex = css`
   display: flex;
@@ -20,7 +21,7 @@ export class Navbar extends Component {
                   <Typography variant="title" color="inherit">
                       MyTube
                   </Typography>
-                  <IconButton color='secondary' aria-label='Configuration'>
+                  <IconButton href={appRoutes.app.CONFIG} color='secondary' aria-label='Configuration'>
                      <SettingsIcon/>
                   </IconButton>
               </Toolbar>
