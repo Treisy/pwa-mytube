@@ -7,22 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import {css} from 'emotion';
 import PropTypes from "prop-types";
 import React, {Component} from 'react';
-import styled from 'react-emotion';
-import ReactPlayer from 'react-player';
 import {gridList} from "../../assets/styles/core/grid";
 import {spaceBottom} from "../../assets/styles/helpers/utils";
 import {mediaQuery} from "../../constants/breakpoints";
 
-const PlayerWrapper = styled('div')`
-    position: relative;
-    padding-top: 56.25%;
-`;
-
-const reactPlayer = css({
-  position: 'absolute',
-  top: 0,
-  left: 0
-});
 
 const card = css`
     width: 100%;
@@ -55,16 +43,7 @@ export class ResultSearch extends Component{
               if(item.id.kind === 'youtube#video')  {
                 return (
                   <Card className={[card, spaceBottom].join(' ')} key={item.id.videoId}>
-                    <CardMedia image={item.snippet.thumbnails.high.url} title={item.snippet.title}>
-                      <PlayerWrapper>
-                        <ReactPlayer
-                          className={reactPlayer}
-                          url='https://www.youtube.com/watch?v={video.id.videoId}'
-                          width='100%'
-                          height='100%'
-                        />
-                      </PlayerWrapper>
-                    </CardMedia>
+                    <CardMedia image={item.snippet.thumbnails.high.url} title={item.snippet.title}/>
                     <CardContent>
                       <Typography variant='headline' component='h3'>
                         {item.snippet.title}
