@@ -11,6 +11,7 @@ import React, {Component} from 'react';
 import {spaceBottom} from "../assets/styles/helpers/utils";
 import {card, cardMedia} from "../assets/styles/modules/cards";
 import firebase from '../config/firebase';
+import {REF_VIDEOS} from "../constants/database";
 
 const favorite = css`
     color: red;
@@ -35,7 +36,6 @@ export class VideoCard extends Component{
     const currentState = this.state.isFavorite;
     this.setState({ isFavorite: !currentState });
 
-    const itemsRef = firebase.database().ref('videos');
     const item = {
       videoId: this.props.id,
       videoTitle: this.props.title,
@@ -44,7 +44,7 @@ export class VideoCard extends Component{
       channelId: this.props.channelId
     }
 
-    itemsRef.push(item);
+    REF_VIDEOS.push(item);
   };
 
   render() {

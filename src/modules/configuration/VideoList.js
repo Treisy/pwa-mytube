@@ -11,10 +11,8 @@ export class VideoList extends Component{
   render() {
     const { videos } = this.props;
 
-    console.log(videos);
     return(
       <Container>
-        videos
         {
           videos.map(video => {
             return (

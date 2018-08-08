@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import React, {Component} from 'react';
 import styled from "react-emotion";
 import ReactPlayer from "react-player";
+import {VIDEO_EMBED} from "../constants/general";
 
 const PlayerWrapper = styled('div')`
     position: relative;
@@ -17,10 +18,6 @@ const reactPlayer = css({
   left: 0
 });
 
-const videoEmbed = 'https://www.youtube.com/embed/';
-
-console.log('video');
-
 export class Video extends Component{
   static propTypes = {
     id: PropTypes.string,
@@ -30,11 +27,10 @@ export class Video extends Component{
     channelId: PropTypes.string
   };
 
-
   render() {
     const { id, thumbnail, title } = this.props;
 
-    let urlVideo = `${videoEmbed}${id}`;
+    let urlVideo = `${VIDEO_EMBED}${id}`;
 
     return (
       <Card key={id}>
