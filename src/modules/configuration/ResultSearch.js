@@ -18,14 +18,12 @@ export class ResultSearch extends Component{
     items: PropTypes.array
   };
 
-
   _handlerSeeVideos = (id, e) => {
     e.preventDefault();
 
     fetch(`${videoByChannel}&channelId=${id}`)
       .then(res => res.json())
       .then(results => {
-        console.log({results});
         this.props.videos(results.items);
       })
   };
@@ -40,14 +38,13 @@ export class ResultSearch extends Component{
             items.map(item => {
               if(item.id.kind === 'youtube#video')  {
                 return (
-                  <div key={item.id.videoId}>
-                    <VideoCard
-                      id={item.id.videoId}
-                      thumbnail={item.snippet.thumbnails.high.url}
-                      title={item.snippet.title}
-                      description={item.snippet.description}
-                    />
-                  </div>
+                  <VideoCard
+                    id={item.id.videoId}
+                    thumbnail={item.snippet.thumbnails.high.url}
+                    title={item.snippet.title}
+                    description={item.snippet.description}
+                    channelId={item.snippet.channelId}
+                  />
                 )
               } else if(item.id.kind === 'youtube#channel') {
                 return (
