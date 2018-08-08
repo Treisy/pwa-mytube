@@ -12,14 +12,11 @@ export class Config extends Component{
   };
 
   _handleResults = (results) => {
-    console.log(results);
     this.setState({results});
   };
 
 
   _handleChannelId = (videos) => {
-    console.log(videos);
-    // this.setState({channelId});
     this.setState({videos});
   };
 

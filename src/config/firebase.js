@@ -1,11 +1,15 @@
 import firebase from 'firebase'
+import {API_KEY, AUTH_DOMAIN, DB_URL, MESSAGING_SENDER_ID, PROJECT_ID, STORAGE_BUCKET} from "./dev";
+
 const config = {
-  apiKey: 'AIzaSyBBE1ZM2-Kb1DKVzh1bsA0ybGjSZ1kTJgQ',
-  authDomain: 'mytube-212215.firebaseapp.com',
-  databaseURL: 'https://mytube-212215.firebaseio.com',
-  projectId: 'mytube-212215',
-  storageBucket: 'mytube-212215.appspot.com',
-  messagingSenderId: '508206592740'
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DB_URL,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID
 };
+
 firebase.initializeApp(config);
+
 export default firebase;

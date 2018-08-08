@@ -10,6 +10,7 @@ import {gridList} from "../../assets/styles/core/grid";
 import {spaceBottom} from "../../assets/styles/helpers/utils";
 import {card, cardMedia} from "../../assets/styles/modules/cards";
 import {VideoCard} from "../../components/VideoCard";
+import {CHANNEL_TYPE, VIDEO_TYPE} from "../../constants/general";
 import {videoByChannel} from "../../services/api";
 
 
@@ -36,7 +37,7 @@ export class ResultSearch extends Component{
         <div className={gridList}>
           {
             items.map(item => {
-              if(item.id.kind === 'youtube#video')  {
+              if(item.id.kind === VIDEO_TYPE)  {
                 return (
                   <VideoCard
                     id={item.id.videoId}
@@ -46,7 +47,7 @@ export class ResultSearch extends Component{
                     channelId={item.snippet.channelId}
                   />
                 )
-              } else if(item.id.kind === 'youtube#channel') {
+              } else if(item.id.kind === CHANNEL_TYPE) {
                 return (
                   <Card className={[card, spaceBottom].join(' ')} key={item.id.channelId}>
                     <CardMedia className={cardMedia} image={item.snippet.thumbnails.high.url} title={item.snippet.channelTitle}/>
