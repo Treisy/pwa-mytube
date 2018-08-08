@@ -30,9 +30,6 @@ export class Config extends Component{
         <Search onResults={this._handleResults}/>
         <ResultSearch items={this.state.results} videos={this._handleChannelId}/>
         <VideoList videos={this.state.videos}/>
-
-
-
       </Container>
     )
   }

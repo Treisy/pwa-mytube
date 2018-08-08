@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import {Container} from "../../assets/styles/core/grid";
 import {VideoCard} from "../../components/VideoCard";
 
@@ -14,18 +14,17 @@ export class VideoList extends Component{
     console.log(videos);
     return(
       <Container>
-          videos
+        videos
         {
           videos.map(video => {
             return (
-              <div key={video.id.videoId}>
-                <VideoCard
-                  id={video.id.videoId}
-                  thumbnail={video.snippet.thumbnails.high.url}
-                  title={video.snippet.title}
-                  description={video.snippet.description}
-                />
-              </div>
+              <VideoCard
+                id={video.id.videoId}
+                thumbnail={video.snippet.thumbnails.high.url}
+                title={video.snippet.title}
+                description={video.snippet.description}
+                channelId={video.snippet.channelId}
+              />
             )
           })
         }
