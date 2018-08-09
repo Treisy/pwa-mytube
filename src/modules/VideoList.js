@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Container} from "../../assets/styles/core/grid";
-import {VideoCard} from "../../components/VideoCard";
+import {Container} from "../assets/styles/core/grid";
+import {VideoCard} from "../components/VideoCard";
 
 export class VideoList extends Component{
   static propTypes = {
