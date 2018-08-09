@@ -5,6 +5,8 @@ import appRoutes from "./constants/appRoutes";
 import {Config} from "./modules/configuration/Config";
 import {Home} from "./modules/Home";
 import {NotFound} from "./modules/NotFound";
+import 'normalize.css/normalize.css';
+import {BrowserRouter} from 'react-router-dom';
 
 import './App.css';
 
@@ -14,11 +16,13 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
+        <BrowserRouter>
           <Switch>
             <Route exact path={appRoutes.app.HOME} component={Home}/>
             <Route path={appRoutes.app.CONFIG} component={Config} />
             <Route component={NotFound} />
           </Switch>
+        </BrowserRouter>
       </div>
     );
   }
