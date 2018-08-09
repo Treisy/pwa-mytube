@@ -4,32 +4,29 @@ import CardActions from "@material-ui/core/CardActions/CardActions";
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import {css} from 'emotion';
 import PropTypes from "prop-types";
 import React, {Component} from 'react';
 import {gridList} from "../../assets/styles/core/grid";
 import {spaceBottom} from "../../assets/styles/helpers/utils";
-import {mediaQuery} from "../../constants/breakpoints";
+import {card, cardMedia} from "../../assets/styles/modules/cards";
+import {VideoCard} from "../../components/VideoCard";
+import {CHANNEL_TYPE, VIDEO_TYPE} from "../../constants/general";
+import {videoByChannel} from "../../services/api";
 
-
-const card = css`
-    width: 100%;
-
-    ${mediaQuery.medium(css`
-        width: 32.33%;
-        margin-left: 5px;
-        margin-right: 5px;
-  `)};
-`;
-
-const cardMedia = css`
-    height: 0;
-    padding-top: 56.25%;
-`;
 
 export class ResultSearch extends Component{
   static propTypes = {
     items: PropTypes.array
+  };
+
+  _handlerSeeVideos = (id, e) => {
+    e.preventDefault();
+
+    fetch(`${videoByChannel}&channelId=${id}`)
+      .then(res => res.json())
+      .then(results => {
+        this.props.videos(results.items);
+      })
   };
 
   render() {
@@ -40,21 +37,17 @@ export class ResultSearch extends Component{
         <div className={gridList}>
           {
             items.map(item => {
-              if(item.id.kind === 'youtube#video')  {
+              if(item.id.kind === VIDEO_TYPE)  {
                 return (
-                  <Card className={[card, spaceBottom].join(' ')} key={item.id.videoId}>
-                    <CardMedia image={item.snippet.thumbnails.high.url} title={item.snippet.title}/>
-                    <CardContent>
-                      <Typography variant='headline' component='h3'>
-                        {item.snippet.title}
-                      </Typography>
-                      <Typography paragraph>
-                        {item.snippet.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+                  <VideoCard
+                    id={item.id.videoId}
+                    thumbnail={item.snippet.thumbnails.high.url}
+                    title={item.snippet.title}
+                    description={item.snippet.description}
+                    channelId={item.snippet.channelId}
+                  />
                 )
-              } else if(item.id.kind === 'youtube#channel') {
+              } else if(item.id.kind === CHANNEL_TYPE) {
                 return (
                   <Card className={[card, spaceBottom].join(' ')} key={item.id.channelId}>
                     <CardMedia className={cardMedia} image={item.snippet.thumbnails.high.url} title={item.snippet.channelTitle}/>
@@ -67,7 +60,7 @@ export class ResultSearch extends Component{
                       </Typography>
                     </CardContent>
                     <CardActions disableActionSpacing>
-                      <Button href='' color='primary'>See PlayLists</Button>
+                      <Button color='primary' onClick={(e) => this._handlerSeeVideos(item.id.channelId, e)}>See Videos</Button>
                     </CardActions>
                   </Card>
                 )

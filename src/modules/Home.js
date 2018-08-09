@@ -1,14 +1,1 @@
-import React,{Component} from 'react';
-import {Container} from "../assets/styles/core/grid";
-import {Video} from "../components/Video";
-
-export class Home extends Component{
-  render() {
-    return (
-      <Container>
-        <Video/>
-        <Video/>
-      </Container>
-    )
-  }
-}
+import React, {Component} from 'react';import {Container} from "../assets/styles/core/grid";import {Video} from "../components/Video";import {VIDEO} from "../constants/database";export class Home extends Component{  state = {    videos: []  };  componentDidMount() {    VIDEO.once('value', snapshot => {      snapshot.forEach(child => {        this.setState({          videos: this.state.videos.concat(child.val())        })      })    });  };  render() {    return (      <Container>        {          this.state.videos.map(video => {            return(              <Video                id={video.videoId}                thumbnail = {video.videoThumbnail}                title = { video.videoTitle}                description = { video.videoDescription }                channelId = { video.channelId }              />            )          })        }      </Container>    )  }}
