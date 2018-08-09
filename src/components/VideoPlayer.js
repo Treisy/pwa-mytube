@@ -18,13 +18,11 @@ const reactPlayer = css({
   left: 0
 });
 
-export class Video extends Component{
+export class VideoPlayer extends Component{
   static propTypes = {
     id: PropTypes.string,
     thumbnail: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string,
-    channelId: PropTypes.string
   };
 
   render() {

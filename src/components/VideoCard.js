@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {spaceBottom} from "../assets/styles/helpers/utils";
 import {card, cardMedia} from "../assets/styles/modules/cards";
-import firebase from '../config/firebase';
 import {REF_VIDEOS} from "../constants/database";
 
 const favorite = css`

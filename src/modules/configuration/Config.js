@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Container} from "../../assets/styles/core/grid";
+import {VideoCardList} from "../../components/lists/VideoCardList";
+import {Navbar} from "../../components/Navbar";
 import {ResultSearch} from "./ResultSearch";
 import {Search} from "./Search";
-import {VideoList} from "../VideoList";
 
 export class Config extends Component{
   state = { usedSearch: false,
@@ -23,11 +24,14 @@ export class Config extends Component{
 
   render() {
     return(
-      <Container>
-        <Search onResults={this._handleResults}/>
-        <ResultSearch items={this.state.results} videos={this._handleChannelId}/>
-        <VideoList videos={this.state.videos}/>
-      </Container>
+      <section>
+        <Navbar/>
+        <Container>
+          <Search onResults={this._handleResults}/>
+          <ResultSearch items={this.state.results} videos={this._handleChannelId}/>
+          <VideoCardList videos={this.state.videos}/>
+        </Container>
+      </section>
     )
   }
 }
