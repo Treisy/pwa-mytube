@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import styled from "react-emotion";
 import ReactPlayer from "react-player";
 import {VIDEO_EMBED} from "../constants/general";
+import setupStore from "../store";
 
 const PlayerWrapper = styled('div')`
     position: relative;
@@ -27,6 +28,8 @@ export class VideoPlayer extends Component{
 
   render() {
     const { id, thumbnail, title } = this.props;
+
+    console.log(setupStore());
 
     let urlVideo = `${VIDEO_EMBED}${id}`;
 

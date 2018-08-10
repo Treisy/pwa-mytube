@@ -1,4 +1,8 @@
+const initialState = {
+  videos: {}
+};
+
 export default {
-  state: {}
+  state: initialState
 };
 
