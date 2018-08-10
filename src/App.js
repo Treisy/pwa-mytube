@@ -1,16 +1,14 @@
+import 'normalize.css/normalize.css';
 import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {Navbar} from "./components/Navbar";
-import {VideoPlayer} from "./components/VideoPlayer";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
+import './App.css';
 import appRoutes from "./constants/appRoutes";
 import {Config} from "./modules/configuration/Config";
 import {Home} from "./modules/Home";
 import {NotFound} from "./modules/NotFound";
-import 'normalize.css/normalize.css';
-import {BrowserRouter} from 'react-router-dom';
-
-import './App.css';
 import {VideoWithList} from "./modules/VideoWithList";
+import {connect} from 'react-redux';
 
 
 class App extends Component {
@@ -30,4 +28,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapState = state => ({
+  video: state.video
+});
+
+export default connect(mapState)(App);
